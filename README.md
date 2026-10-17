@@ -1,49 +1,54 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby Minimal TypeScript Starter
-</h1>
+# Books
 
-## 🚀 Quick start
+A personal book review website built with Gatsby and TypeScript. Reviews are written in Markdown and rendered into a filterable list.
 
-1.  **Create a Gatsby site.**
+## Features
 
-    Use the Gatsby CLI to create a new site, specifying the minimal TypeScript starter.
+- Book reviews sourced from Markdown files in `src/content/`
+- Filter reviews by author, genre, and minimum rating
+- Context-aware filter options (only shows valid combinations)
+- Rating display component
+- Imprint page
 
-    ```shell
-    # create a new Gatsby site using the minimal TypeScript starter
-    npm init gatsby -- -ts
-    ```
+## Tech stack
 
-2.  **Start developing.**
+- [Gatsby](https://www.gatsbyjs.com/) (v5)
+- TypeScript
+- SCSS
+- `gatsby-transformer-remark` for Markdown processing
 
-    Navigate into your new site’s directory and start it up.
+## Getting started
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+```shell
+npm install
+npm run develop
+```
 
-3.  **Open the code and start customizing!**
+The site runs at `http://localhost:8000`.
 
-    Your site is now running at http://localhost:8000!
+## Adding a review
 
-    Edit `src/pages/index.tsx` to see your site update in real-time!
+Create a Markdown file under `src/content/<author-name>/`:
 
-4.  **Learn more**
+```markdown
+---
+slug: "/my-book"
+date: "2026-01-01"
+title: "Book Title"
+author: Author Name
+genres: ["Genre"]
+rating: 4
+---
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Tutorials](https://www.gatsbyjs.com/docs/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Guides](https://www.gatsbyjs.com/docs/how-to/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
+Your review text here.
+```
 
-## 🚀 Quick start (Netlify)
+## Scripts
 
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
-
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-minimal-ts)
+| Command | Description |
+|---|---|
+| `npm run develop` | Start dev server |
+| `npm run build` | Production build |
+| `npm run serve` | Serve production build locally |
+| `npm run clean` | Clear Gatsby cache |
+| `npm run typecheck` | Run TypeScript type checking |
