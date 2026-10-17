@@ -1,0 +1,3 @@
+// Supports weights 100-900
+import '@fontsource-variable/outfit/wght.css';
+import './src/styles/index.scss'

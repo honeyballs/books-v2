@@ -1,0 +1,42 @@
+.review-item-container {
+   margin-top: 40px;
+   background-color: white;
+   border-bottom: 6px solid black;
+   padding: 20px;
+}
+
+.date-container {
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+   gap: 30px;
+}
+
+.date {
+   opacity: 0.7;
+   margin: 0;
+}
+
+h2 {
+   margin: 0;
+}
+
+.author-name {
+   margin-top: 5px;
+}
+
+.genre-container {
+   width: 100%;
+   list-style-type: none;
+   border-top: 2px solid black;
+   margin: 15px 0 0;
+   padding: 15px 0 0;
+   display: flex;
+   gap: 10px;
+   justify-content: flex-start;
+}
+
+.genre-item {
+   display: inline;
+   font-size: 0.9em;
+}

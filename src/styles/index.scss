@@ -1,0 +1,75 @@
+$font-stack: Outfit Variable, Helvetica, sans-serif;
+$box-border: 6px solid black;
+
+body {
+   font-family: $font-stack;
+   background-color: #F7D200;
+   margin: 0;
+}
+
+main {
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   justify-content: flex-start;
+   align-items: center;
+   min-height: 100vh;
+}
+
+.main-content {
+   width: 60%;
+   padding-bottom: 40px;
+}
+
+#headline-box {
+   width: calc(100% - 20px);
+   background-color: white;
+   padding: 0 0 40px 20px;
+   border-bottom: 10px solid black;
+}
+
+h1 {
+   font-size: 6em;
+}
+
+footer {
+   width: 60%;
+   display: flex;
+   justify-content: flex-end;
+   margin-bottom: 30px;
+}
+
+a {
+   color: black;
+}
+
+@media (width < 1025px) {
+
+   .main-content {
+      width: 80%;
+   }
+
+   h1 {
+      font-size: 4em;
+   }
+
+   #headline-box {
+      background-color: white;
+      padding: 0 0 30px 20px;
+      border-bottom: $box-border;
+   }
+
+   footer {
+      width: 80%;
+   }
+}
+
+@media (width < 500px) {
+   h1 {
+      font-size: 2em;
+   }
+
+   h2 {
+      font-size: 1em;
+   }
+}
