@@ -3,7 +3,7 @@ slug: "/ki-und-der-neue-faschismus"
 date: "2026-08-17"
 title: "Künstliche Intelligenz und der neue Faschismus"
 author: Rainer Mühlhoff
-genres: Non-Fiction, Politics, Technology
+genres: ["Non-Fiction", "Politics", "Technology"]
 rating: 5
 ---
 

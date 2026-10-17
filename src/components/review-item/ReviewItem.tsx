@@ -1,12 +1,11 @@
 import * as React from "react"
 import "./review-item.scss"
 import RatingDisplay from "../rating-display/RatingDisplay";
+import { Review } from "../../types/types";
 
 export default function ReviewItem({ review }: { review: Review }) {
 
    const { title, author, date, rating, content, genres } = review;
-
-   const genreArray = genres.split(",");
 
    return <article className="review-item-container">
       <div className="date-container">
@@ -22,17 +21,8 @@ export default function ReviewItem({ review }: { review: Review }) {
          <div dangerouslySetInnerHTML={{ __html: content }}></div>
       </details>
       <ul className="genre-container">
-         {genreArray.map(genre => (<li className="genre-item">{genre}</li>))}
+         {genres.map(genre => (<li className="genre-item" key={`${title}-${genre}`}>{genre}</li>))}
       </ul>
    </article>
-}
-
-export interface Review {
-   title: string
-   author: string
-   genres: string
-   date: Date
-   rating: number
-   content: string
 }
 

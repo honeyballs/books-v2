@@ -3,7 +3,7 @@ slug: "/deadhouse-gates"
 date: "2026-05-23"
 title: "Deadhouse Gates: (Malazan Book of the Fallen 2)"
 author: Steven Erikson
-genres: Dark Fantasy
+genres: ["Dark Fantasy"]
 rating: 4
 ---
 

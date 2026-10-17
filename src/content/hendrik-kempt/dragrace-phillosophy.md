@@ -3,7 +3,7 @@ slug: "/drag-race-and-philosophy"
 date: "2026-06-15"
 title: "RuPaul's Drag Race and Philosophy"
 author: Hendrik Kempt
-genres: Non-Fiction, Queer Literature, Philosophy
+genres: ["Non-Fiction", "Queer Literature", "Philosophy"]
 rating: 3
 ---
 

@@ -2,33 +2,72 @@ import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
 import { graphql, Link } from "gatsby"
 import ReviewItem from "../components/review-item/ReviewItem"
+import FilterBar from "../components/filter-bar/FilterBar"
+import type { Review, FilterCriteria } from "../types/types"
+
+type DataNode = {
+  frontmatter: {
+    title: string
+    author: string
+    date: string
+    genres: string[]
+    rating: number
+  }
+  html: string
+}
 
 type DataProp = {
   allMarkdownRemark: {
-    nodes: {
-      frontmatter: {
-        title: string
-        author: string
-        date: Date
-        genres: string[]
-        rating: number
-      }
-      html: string
-    }[]
+    nodes: DataNode[]
   }
 }
 
+const createInitialReviewItems = (nodes: DataNode[] = []): Review[] => {
+  return nodes.map(dataNode => ({
+    title: dataNode.frontmatter.title,
+    author: dataNode.frontmatter.author,
+    date: new Date(dataNode.frontmatter.date),
+    genres: dataNode.frontmatter.genres,
+    rating: dataNode.frontmatter.rating,
+    content: dataNode.html
+  }))
+    .sort((review1, review2) => (review1.date - review2.date) * -1);
+}
+
+const filterReviews = (reviews: Review[], filterCriteria: FilterCriteria): Review[] => {
+  return reviews.filter(review => {
+    if (filterCriteria.author) {
+      if (filterCriteria.author !== review.author) {
+        return false;
+      }
+    }
+
+    if (filterCriteria.rating > -1) {
+      if (review.rating < filterCriteria.rating) {
+        return false;
+      }
+    }
+
+    if (filterCriteria.genre) {
+      if (!review.genres.includes(filterCriteria.genre)) {
+        return false;
+      }
+    }
+
+    return true;
+  });
+}
+
+
 const IndexPage: React.FC<PageProps<DataProp>> = ({ data }) => {
+  const [reviews, setReviews] = React.useState<Review[]>(createInitialReviewItems(data?.allMarkdownRemark?.nodes));
+  const [filterCriteria, setFilterCriteria] = React.useState<FilterCriteria>({
+    author: "",
+    genre: "",
+    rating: -1
+  })
 
-  const reviewNodesWithDateObject = React.useMemo(() => data?.allMarkdownRemark?.nodes.map(node => ({
-    ...node, 
-    frontmatter: {
-      ...node.frontmatter, 
-      date: new Date(node.frontmatter.date)
-    }})) || [], [data]);
-
-  const filteredAndSortedNodes = reviewNodesWithDateObject
-  .sort((node1, node2) => (node1.frontmatter.date - node2.frontmatter.date) * -1); 
+  const filteredReviews = React.useMemo(() => filterReviews(reviews, filterCriteria), [reviews, filterCriteria]);
 
   return (
     <main>
@@ -36,17 +75,14 @@ const IndexPage: React.FC<PageProps<DataProp>> = ({ data }) => {
         <div id="headline-box">
           <h1>The Books</h1>
         </div>
+        <FilterBar
+          currentFilterCriteria={filterCriteria}
+          setFilterCriteria={setFilterCriteria}
+        />
         <div className="book-list">
-          {filteredAndSortedNodes.map(node => (<ReviewItem
-            key={`${node.frontmatter.title}-${node.frontmatter.author}`}
-            review={{
-              title: node.frontmatter.title,
-              author: node.frontmatter.author,
-              date: node.frontmatter.date,
-              genres: node.frontmatter.genres,
-              rating: node.frontmatter.rating,
-              content: node.html
-            }}
+          {filteredReviews.map(review => (<ReviewItem
+            key={`${review.title}-${review.author}`}
+            review={review}
           />))}
         </div>
       </div>

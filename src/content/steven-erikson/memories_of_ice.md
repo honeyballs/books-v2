@@ -3,7 +3,7 @@ slug: "/memories-of-ice"
 date: "2026-09-09"
 title: "Memories of Ice (Malazan Book of the Fallen 3)"
 author: Steven Erikson
-genres: Dark Fantasy
+genres: ["Dark Fantasy"]
 rating: 4
 ---
 

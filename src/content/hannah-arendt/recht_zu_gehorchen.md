@@ -3,7 +3,7 @@ slug: "/arendt-interviews"
 date: "2026-09-09"
 title: "\"Kein Mensch hat das Recht zu gehorchen.\" Zwei Interviews"
 author: Hannah Arendt
-genres: Non-Fiction, Politics, Philosophy
+genres: ["Non-Fiction", "Politics", "Philosophy"]
 rating: 3
 ---
 

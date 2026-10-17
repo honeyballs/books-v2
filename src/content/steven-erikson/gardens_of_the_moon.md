@@ -3,7 +3,7 @@ slug: "/gardens-of-the-moon"
 date: "2026-03-28"
 title: "Gardens of the Moon: (Malazan Book of the Fallen 1)"
 author: Steven Erikson
-genres: Dark Fantasy
+genres: ["Dark Fantasy"]
 rating: 4
 ---
 
