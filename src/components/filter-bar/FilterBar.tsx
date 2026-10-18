@@ -41,22 +41,39 @@ export default function FilterBar({
 
    const onResetForm = React.useCallback(() => { setFilterCriteria({ author: "", genre: "", rating: -1 }) }, [setFilterCriteria])
 
+   const isFirefox = navigator.userAgent.indexOf("Firefox") > -1;
+
    return (<div className="filter-bar">
 
       <div className="filter-input">
          <label htmlFor="authors">Author</label>
-         <input type="text" list="author-list" name="authors" id="authors" value={currentFilterCriteria.author} onChange={(event) => onAuthorChange(event.target.value)} />
-         <datalist id="author-list">
-            {allowedOptions.authorOptions.map((author) => (<option value={author} key={author}>{author}</option>))}
-         </datalist>
+         {isFirefox ?
+            <select name="authors" id="authors" value={currentFilterCriteria.author} onChange={(event) => onAuthorChange(event.target.value)}>
+               <option value="" key="undefined-author">-</option>
+               {allowedOptions.authorOptions.map((author) => (<option value={author} key={author}>{author}</option>))}
+            </select> :
+            <>
+               <input type="text" list="author-list" name="authors" id="authors" value={currentFilterCriteria.author} onChange={(event) => onAuthorChange(event.target.value)} />
+               <datalist id="author-list">
+                  {allowedOptions.authorOptions.map((author) => (<option value={author} key={author}>{author}</option>))}
+               </datalist>
+            </>}
       </div>
 
       <div className="filter-input">
          <label htmlFor="genres">Genre</label>
-         <input type="text" list="genre-list" name="genres" id="genres" value={currentFilterCriteria.genre} onChange={(event) => onGenreChange(event.target.value)} />
-         <datalist id="genre-list">
-            {allowedOptions.genreOptions.map((genre) => (<option value={genre} key={genre}>{genre}</option>))}
-         </datalist>
+         {isFirefox ?
+            <select name="genres" id="genres" value={currentFilterCriteria.genre} onChange={(event) => onGenreChange(event.target.value)}>
+               <option value="" key="undefined-genre">-</option>
+               {allowedOptions.genreOptions.map((genre) => (<option value={genre} key={genre}>{genre}</option>))}
+            </select> :
+            <>
+               <input type="text" list="genre-list" name="genres" id="genres" value={currentFilterCriteria.genre} onChange={(event) => onGenreChange(event.target.value)} />
+               <datalist id="genre-list">
+                  {allowedOptions.genreOptions.map((genre) => (<option value={genre} key={genre}>{genre}</option>))}
+               </datalist>
+            </>
+         }
       </div>
 
       <div className="rating-input">
