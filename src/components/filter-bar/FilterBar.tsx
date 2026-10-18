@@ -41,7 +41,8 @@ export default function FilterBar({
 
    const onResetForm = React.useCallback(() => { setFilterCriteria({ author: "", genre: "", rating: -1 }) }, [setFilterCriteria])
 
-   const isFirefox = navigator.userAgent.indexOf("Firefox") > -1;
+   // The first check is used to prevent gatsby from crashing while building - window/navigator is not available there
+   const isFirefox = typeof window !== 'undefined' && navigator.userAgent.indexOf("Firefox") > -1;
 
    return (<div className="filter-bar">
 
